@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>text</key>
+		<string>喂，你好！</string>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 20:00</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>你好！你是谁？</string>
+		<key>type</key>
+		<integer>1</integer>
+		<key>time</key>
+		<string>前天 20:02</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>我是你爸，哈哈哈！</string>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 20:03</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>滚，SB！</string>
+		<key>type</key>
+		<integer>1</integer>
+		<key>time</key>
+		<string>前天 20:06</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>SB，就不认识我了？</string>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 20:10</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>我是xxx，找你帮个忙！</string>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 20:11</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>不认识，拜拜！</string>
+		<key>type</key>
+		<integer>1</integer>
+		<key>time</key>
+		<string>前天 20:21</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>别啊，发小都不认识？</string>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 20:23</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>不认识，滚吧！</string>
+		<key>type</key>
+		<integer>1</integer>
+		<key>time</key>
+		<string>前天 20:30</string>
+	</dict>
+</array>
+</plist>
