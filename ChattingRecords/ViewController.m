@@ -9,7 +9,9 @@
 #import "ViewController.h"
 #import "CLMessageFrame.h"
 #import "CLMessage.h"
-@interface ViewController () <UITableViewDataSource>
+#import "CLMessageCell.h"
+
+@interface ViewController () <UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *messageFrames;
@@ -18,9 +20,13 @@
 
 @implementation ViewController
 
+- (BOOL)prefersStatusBarHidden {
+    return YES;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-   // self.tableView.delegate = self;
+    self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
 }
@@ -35,12 +41,16 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CLMessageFrame *messageFrame = self.messageFrames[indexPath.row];
-    static NSString *ID = @"message_cell";
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    CLMessageCell *cell = [CLMessageCell messageCellWithTableView:tableView];
     cell.messageFrame = messageFrame;
     return cell;
 }
 
+#pragma mak -UITableViewDelegate 方法
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    CLMessageFrame *messageFrame = self.messageFrames[indexPath.row];
+    return messageFrame.rowHeight;
+}
 
 #pragma mak -懒加载
 //懒加载

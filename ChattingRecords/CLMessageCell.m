@@ -25,10 +25,19 @@
 //分别设每个子控件的数据和Frame;
     //设置时间Label的 数据 和 Frame
     self.textLabel.text = message.time;
+    self.textLabel.frame = messageFrame.timeFrame;
+    self.textLabel.font = [UIFont systemFontOfSize:12];
+    self.textLabel.textAlignment = NSTextAlignmentCenter;
     
     //设置正文Button的 数据 和 Frame
-    self.textButton.titleLabel.text = message.text;
+    [self.textButton setTitle:message.text forState:UIControlStateNormal];
+    self.textButton.frame = messageFrame.textFrame;
+    self.textButton.titleLabel.font = textFont;
+    
     //设置头像ImageView的 数据 和 Frame
+    NSString *iconName = message.type == 0 ? @"me":@"Other";
+    self.iconImage.image = [UIImage imageNamed:iconName];
+    self.iconImage.frame = messageFrame.iconFrame;
     
 }
 
@@ -52,6 +61,17 @@
         
     }
     return self;
+}
+
+
+
++ (instancetype)messageCellWithTableView:(UITableView *)tableView{
+    static NSString *ID = @"message_cell";
+    CLMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if(!cell){
+        cell = [[CLMessageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
+    }
+    return cell;
 }
 
 - (void)awakeFromNib {

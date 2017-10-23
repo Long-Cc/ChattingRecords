@@ -7,16 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import <CoreGraphics/CoreGraphics.h>
+#define textFont [UIFont systemFontOfSize:14]
+
 @class CLMessage;
 
 @interface CLMessageFrame : NSObject
 
 @property (nonatomic, strong) CLMessage *message;
 
-@property (nonatomic, assign, readonly)  CGRect *timeFrame;
-@property (nonatomic, assign, readonly)  CGRect *iconFrame;
-@property (nonatomic, assign, readonly)  CGRect *textFrame;
+@property (nonatomic, assign, readonly)  CGRect timeFrame;
+@property (nonatomic, assign, readonly)  CGRect iconFrame;
+@property (nonatomic, assign, readonly)  CGRect textFrame;
 @property (nonatomic, assign, readonly)  CGFloat rowHeight;
 
 @end

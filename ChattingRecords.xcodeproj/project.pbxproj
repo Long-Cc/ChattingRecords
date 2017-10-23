@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04262EE11F9E342500B98F51 /* NSString+CLStringExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 04262EE01F9E342500B98F51 /* NSString+CLStringExt.m */; };
 		043F74BA1F9C464400799D34 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 043F74B91F9C464400799D34 /* AppDelegate.m */; };
 		043F74BD1F9C464400799D34 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043F74BC1F9C464400799D34 /* ViewController.m */; };
 		043F74C01F9C464400799D34 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 043F74BE1F9C464400799D34 /* Main.storyboard */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04262EDF1F9E342500B98F51 /* NSString+CLStringExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+CLStringExt.h"; sourceTree = "<group>"; };
+		04262EE01F9E342500B98F51 /* NSString+CLStringExt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+CLStringExt.m"; sourceTree = "<group>"; };
 		043F74B51F9C464400799D34 /* ChattingRecords.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChattingRecords.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		043F74B81F9C464400799D34 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		043F74B91F9C464400799D34 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -89,6 +92,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04262EDE1F9E332C00B98F51 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				04262EDF1F9E342500B98F51 /* NSString+CLStringExt.h */,
+				04262EE01F9E342500B98F51 /* NSString+CLStringExt.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		043F74AC1F9C464300799D34 = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +196,7 @@
 		043F74EE1F9C494400799D34 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				04262EDE1F9E332C00B98F51 /* Categories */,
 				043F74B81F9C464400799D34 /* AppDelegate.h */,
 				043F74B91F9C464400799D34 /* AppDelegate.m */,
 			);
@@ -328,6 +341,7 @@
 				043F74BD1F9C464400799D34 /* ViewController.m in Sources */,
 				043F74C81F9C464400799D34 /* main.m in Sources */,
 				04C3A5A01F9CEC3500547AF0 /* CLMessageCell.m in Sources */,
+				04262EE11F9E342500B98F51 /* NSString+CLStringExt.m in Sources */,
 				04C3A59A1F9CADF500547AF0 /* CLMessage.m in Sources */,
 				04C3A59D1F9CCBE800547AF0 /* CLMessageFrame.m in Sources */,
 				043F74BA1F9C464400799D34 /* AppDelegate.m in Sources */,

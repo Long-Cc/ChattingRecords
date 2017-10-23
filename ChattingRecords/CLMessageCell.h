@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) CLMessageFrame *messageFrame;
 
++ (instancetype)messageCellWithTableView:(UITableView *)tableView;
+
 @end
