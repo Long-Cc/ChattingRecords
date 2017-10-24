@@ -21,13 +21,15 @@
     //設置顯示時間的frame
     CGFloat timeX = 0;
     CGFloat timeY = 0;
-    CGFloat timeH = 10;
+    CGFloat timeH = 20;
     CGFloat timeW = screenW;
-    _timeFrame = CGRectMake(timeX, timeY, timeW, timeH);
+    if(!message.hideTime){
+       _timeFrame = CGRectMake(timeX, timeY, timeW, timeH);
+    }
     
     //設置頭像的Frame
-    CGFloat iconH = 30;
-    CGFloat iconW = 30;
+    CGFloat iconH = 50;
+    CGFloat iconW = 50;
     CGFloat iconX = message.type == CLMessageTypeOther ? margin : screenW - margin - iconW;
     CGFloat iconY =  CGRectGetMaxY(_timeFrame) + margin;
     _iconFrame = CGRectMake(iconX, iconY, iconW, iconH);
@@ -35,16 +37,16 @@
     //設置正文的Frame
         //根據正文数字数目计算大小
     CGSize textSize = [message.text sizeOfTextWithMaxSize:CGSizeMake(200, MAXFLOAT) font:textFont];
-    CGFloat textW = textSize.width;
-    CGFloat textH = textSize.height;
+    CGFloat textW = textSize.width + 40;
+    CGFloat textH = textSize.height + 30;
     CGFloat textY = iconY;
-    CGFloat textX = message.type == CLMessageTypeOther ? CGRectGetMaxX(_iconFrame) : (screenW - margin - iconW - textW);
+    CGFloat textX = message.type == CLMessageTypeOther ? (CGRectGetMaxX(_iconFrame) + margin) : (screenW - 2 * margin - iconW - textW);
     _textFrame = CGRectMake(textX, textY, textW, textH);
     
     //计算行高
         //获取头像的最大的Y值 和 正文的最大的Y值
     CGFloat MaxY = MAX(CGRectGetMaxY(_textFrame), CGRectGetMaxY(_iconFrame));
-    _rowHeight = margin + MaxY;
+    _rowHeight = 2 * margin + MaxY;
     
     
 }

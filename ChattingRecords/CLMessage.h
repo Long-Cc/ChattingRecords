@@ -18,6 +18,7 @@ typedef enum {
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NSString *time;
 @property (nonatomic, assign) CLMessageType type;
+@property (nonatomic, assign) BOOL hideTime;
 
 - (instancetype)initWithDict:(NSDictionary *)dict;
 + (instancetype)messageWithDict:(NSDictionary *)dict;

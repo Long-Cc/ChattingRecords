@@ -20,19 +20,39 @@
 - (void)setMessageFrame:(CLMessageFrame *)messageFrame {
     //获取数据模型
     CLMessage *message = messageFrame.message;
-    
     _messageFrame = messageFrame;
 //分别设每个子控件的数据和Frame;
     //设置时间Label的 数据 和 Frame
-    self.textLabel.text = message.time;
-    self.textLabel.frame = messageFrame.timeFrame;
-    self.textLabel.font = [UIFont systemFontOfSize:12];
-    self.textLabel.textAlignment = NSTextAlignmentCenter;
+    self.timeLabel.text = message.time;
+    self.timeLabel.frame = messageFrame.timeFrame;
+    self.timeLabel.font = [UIFont systemFontOfSize:12];
+    self.timeLabel.textAlignment = NSTextAlignmentCenter;
+    self.timeLabel.hidden = message.hideTime;
     
     //设置正文Button的 数据 和 Frame
     [self.textButton setTitle:message.text forState:UIControlStateNormal];
     self.textButton.frame = messageFrame.textFrame;
+    //设置正文颜色
+    [self.textButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    //设置正文数字大小
     self.textButton.titleLabel.font = textFont;
+    //设置正文可以换行
+    self.textButton.titleLabel.numberOfLines = 0;
+    //[self.textButton setBackgroundColor:[UIColor yellowColor]];
+    self.textButton.contentEdgeInsets = UIEdgeInsetsMake(15, 20, 15, 20);
+    
+    //设置正文内容的背景图
+    NSString *imageName;
+    if(message.type == CLMessageTypeMe) {
+        imageName = @"chat_right";
+    }else {
+        imageName = @"chat_left";
+    }
+    UIImage *backgroundImage = [UIImage imageNamed:imageName];
+    //图片使用拉伸方式为平铺形式 不使图片变形
+    backgroundImage = [backgroundImage stretchableImageWithLeftCapWidth:backgroundImage.size.width * 0.5 topCapHeight:backgroundImage.size.height * 0.5];
+    [self.textButton setBackgroundImage:backgroundImage forState:UIControlStateNormal];
+    [self.textButton setBackgroundImage:backgroundImage forState:UIControlStateHighlighted];
     
     //设置头像ImageView的 数据 和 Frame
     NSString *iconName = message.type == 0 ? @"me":@"Other";
