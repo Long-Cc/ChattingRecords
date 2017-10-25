@@ -33,12 +33,37 @@
     self.tableView.backgroundColor = [UIColor colorWithRed:236.0/255 green:236.0/250 blue:236.0/250 alpha:1];
     //不被选中
     self.tableView.allowsSelection = NO;
+    //设置键盘弹出的监听
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(keyBoardWillChangerFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+}
+//键盘弹出改变Frame的监听将调用的方法
+- (void)keyBoardWillChangerFrame:(NSNotification *)noteInfo {
+    //NSLog(@"%@",noteInfo.userInfo);
+    /**
+     UIKeyboardAnimationCurveUserInfoKey = 7;
+     UIKeyboardAnimationDurationUserInfoKey = "0.25";
+     UIKeyboardBoundsUserInfoKey = "NSRect: {{0, 0}, {375, 0}}";
+     UIKeyboardCenterBeginUserInfoKey = "NSPoint: {187.5, 667}";
+     UIKeyboardCenterEndUserInfoKey = "NSPoint: {187.5, 667}";
+     UIKeyboardFrameBeginUserInfoKey = "NSRect: {{0, 667}, {375, 0}}";
+     UIKeyboardFrameEndUserInfoKey = "NSRect: {{0, 667}, {375, 0}}";
+     UIKeyboardIsLocalUserInfoKey = 1;
+     }
+     */
+    CGRect rectEnd =  [noteInfo.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGFloat keyBoardY = rectEnd.origin.y;
+    CGFloat transformY = keyBoardY - self.view.frame.size.height;
+    self.view.transform = CGAffineTransformMakeTranslation(0, transformY);
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 #pragma mak -UITableViewDataSource 方法
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.messageFrames.count;

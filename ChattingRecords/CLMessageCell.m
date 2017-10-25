@@ -33,7 +33,11 @@
     [self.textButton setTitle:message.text forState:UIControlStateNormal];
     self.textButton.frame = messageFrame.textFrame;
     //设置正文颜色
-    [self.textButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    if(message.type == CLMessageTypeMe) {
+         [self.textButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    }else {
+         [self.textButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
     //设置正文数字大小
     self.textButton.titleLabel.font = textFont;
     //设置正文可以换行
