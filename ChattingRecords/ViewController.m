@@ -11,7 +11,7 @@
 #import "CLMessage.h"
 #import "CLMessageCell.h"
 
-@interface ViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface ViewController () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, strong) NSMutableArray *messageFrames;
@@ -36,7 +36,7 @@
     //设置键盘弹出的监听
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(keyBoardWillChangerFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    
+ 
 }
 //键盘弹出改变Frame的监听将调用的方法
 - (void)keyBoardWillChangerFrame:(NSNotification *)noteInfo {
@@ -56,7 +56,16 @@
     CGFloat keyBoardY = rectEnd.origin.y;
     CGFloat transformY = keyBoardY - self.view.frame.size.height;
     self.view.transform = CGAffineTransformMakeTranslation(0, transformY);
+    
+    
+    //键盘弹出 UITableView滚到最下面
+    NSIndexPath *lastRowIndexPath = [NSIndexPath indexPathForRow:self.messageFrames.count - 1 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:lastRowIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -80,6 +89,55 @@
     CLMessageFrame *messageFrame = self.messageFrames[indexPath.row];
     return messageFrame.rowHeight;
 }
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    //键盘叫回去
+    [self.view endEditing:YES];
+}
+
+
+#pragma mak -UITextFieldDelegate 方法
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    //获取输入框的信息
+    NSString *inputMessage = textField.text;
+    
+    [self sendMessage:inputMessage WithType:CLMessageTypeMe];
+    
+    [self sendMessage:@"gun!" WithType:CLMessageTypeOther];
+    
+    textField.text = nil;
+    
+    return YES;
+}
+- (void)sendMessage:(NSString *)meg WithType:(CLMessageType)type {
+    //去增加一条消息模型
+    CLMessage *message = [[CLMessage alloc] init];
+    message.text = meg;
+    //获取系统当前时间
+    NSDate *nowDate = [NSDate date];
+    //去创建一个日期格式化器
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"今天 HH:mm";
+    message.time =[formatter stringFromDate:nowDate];
+    message.type = type;
+    
+    //与上一个模型的时间比较，相同隐藏
+    //获取上一个模型
+    CLMessageFrame *lastMessageFrame = [self.messageFrames lastObject];
+    if ([message.time isEqualToString:lastMessageFrame.message.time]) {
+        message.hideTime = YES;
+    }
+    CLMessageFrame *messageFrame = [[CLMessageFrame alloc] init];
+    messageFrame.message = message;
+    
+    [self.messageFrames addObject:messageFrame];
+    //刷新页面
+    [self.tableView reloadData];
+    
+    //tableView移到最下面
+    NSIndexPath *lastRowIndexPath = [NSIndexPath indexPathForRow:self.messageFrames.count - 1 inSection:0];
+    [self.tableView scrollToRowAtIndexPath:lastRowIndexPath atScrollPosition:UITableViewScrollPositionTop animated:NO];
+}
+
 
 #pragma mak -懒加载
 //懒加载

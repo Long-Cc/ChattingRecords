@@ -74,5 +74,61 @@
 		<key>time</key>
 		<string>前天 20:30</string>
 	</dict>
+	<dict>
+		<key>text</key>
+		<string>我认识你</string>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 20:40</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>认识我？你要我帮什么？</string>
+		<key>type</key>
+		<integer>1</integer>
+		<key>time</key>
+		<string>前天 20:40</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>借我5000块，明天还你！、</string>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 20:40</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>好，账号给我，给你烧过去！</string>
+		<key>type</key>
+		<integer>1</integer>
+		<key>time</key>
+		<string>前天 20:42</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>谢谢，兄弟！4565132145</string>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 20:42</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>5000亿给你烧过去，不用找啊，哈哈哈哈！哪来的智障，，</string>
+		<key>type</key>
+		<integer>1</integer>
+		<key>time</key>
+		<string>前天 20:50</string>
+	</dict>
+	<dict>
+		<key>text</key>
+		<string>你，</string>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 20:50</string>
+	</dict>
 </array>
 </plist>
